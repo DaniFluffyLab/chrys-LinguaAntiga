@@ -266,6 +266,10 @@ form#tradutor {
   flex-direction: column;
   justify-content: center;
   gap: 10px;
+
+  p:has(#LATranslated) {
+    overflow-wrap: break-word
+  }
 }
 
 .containerLA {
