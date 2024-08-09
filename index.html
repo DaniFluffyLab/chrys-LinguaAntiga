@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Dependências -->
+  <script src="resources/lingua_antiga.js"></script>
+  <link rel="stylesheet" href="resources/style.css">
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+
+  <!-- Filtros SVG -->
+  <svg height="0" width="0">
+    <filter id="borda-rasgada-curta">
+      <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="1" />
+      <feDisplacementMap in="SourceGraphic" scale="15" />
+    </filter>
+    <filter id="borda-rasgada-longa">
+      <feTurbulence x="0" y="0" baseFrequency="0.009" numOctaves="5" seed="3" />
+      <feDisplacementMap in="SourceGraphic" scale="15" />
+    </filter>
+  </svg>
+
+</head>
+
+<body>
+
+  <img class="vinheta" src="resources/imgs/vignette.png">
+
+  <div class="conteudo papel tipo1">
+
+    <header>
+      <img src="resources/imgs/logo_chrys.png" alt="Logo do Chrysopoeia" class="logoChrys">
+      <h1>Tradutor de Língua Antiga</h1>
+    </header>
+
+    <section>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis architecto qui ipsum placeat voluptatem
+        corporis officiis eum molestias sapiente maxime, vitae laborum sint. Ab ipsam consequatur consectetur placeat
+        voluptatem quo.</p>
+    </section>
+
+    <form id="tradutor">
+
+      <div class="camposForm">
+
+        <p>
+          <b>Escreva aqui o texto para traduzir para Língua Antiga:</b>
+        </p>
+
+        <div id="LAText" role="textbox" contenteditable data-value="" oninput="this.dataset.value = this.textContent">
+        </div>
+
+        <p>Lê-se: <span id="LATranslated"></span></p>
+
+        <label>
+          <input id="LAAnticlockwise" type="checkbox">
+          <span>Escrever em Antihorário</span>
+        </label>
+
+        <label>
+          <input id="LARusticMode" type="checkbox">
+          <span>Desenhar rusticamente</span>
+        </label>
+
+        <br>
+
+        <button type="submit">Traduzir</button>
+
+      </div>
+
+      <div class="containerLA">
+        <div class="LAImages papel tipo2">
+          <img src="resources/imgs/placeholder.png" data-type="old">
+        </div>
+        <br>
+        <a id="LADownload" download="lingua_antiga.png" href="" class="button">Baixar imagem</a>
+      </div>
+    </form>
+
+    <section>
+      <p style="font-size: 8pt; text-align: center;">Chrysopoeia é um cenário de Tormenta20 criado pelo Cian - <a href="http://" target="_blank" rel="noopener noreferrer">@ciansopoeia</a>.<br>
+        Tradutor da Lingua Antiga desenvolvido com ❤️ pela Daniele - <a href="http://" target="_blank" rel="noopener noreferrer">@danifluffycat</a>. <br>
+        Texturas obtidas por <a href="http://" target="_blank" rel="noopener noreferrer">Freepik</a>. NÃO foi utilizado nenhuma IA generativa para "criar" nenhum aspecto deste site. <br>
+      </p>
+    </section>
+
+  </div>
+
+  <script>
+
+    // Função para controlar o forms de tradução
+    document.querySelector("#tradutor").addEventListener("submit", (event) => {
+      event.preventDefault()
+
+      // Obtém as configs
+      let text = document.querySelector("#LAText").dataset.value
+      let mirror = document.querySelector("#LAAnticlockwise").checked
+      let rustic = document.querySelector("#LARusticMode").checked
+
+      // Traduz a string
+      let LAImage = translateAndCreateIMG(text, mirror, 200, rustic)
+
+      // Insere a imagem
+      document.querySelector(".LAImages").insertAdjacentHTML("beforeend",
+        `<img src="${LAImage}" data-type="new">`
+      )
+      document.querySelector("#LADownload").href = LAImage
+
+      // Remove a imagem antiga
+      setTimeout(() => {
+        document.querySelector(`.LAImages img[data-type="old"]`).remove()
+        document.querySelector(`.LAImages img[data-type="new"]`).dataset.type = "old"
+      }, 4000)
+
+
+    })
+
+    // Função para traduzir o texto digitado
+    document.querySelector("#LAText").addEventListener("input", () => {
+      let string = document.querySelector("#LAText").textContent
+      let translated = document.querySelector("#LATranslated")
+      translated.textContent = clearString(string)
+    })
+
+
+  </script>
+
+</body>
+
+</html>
