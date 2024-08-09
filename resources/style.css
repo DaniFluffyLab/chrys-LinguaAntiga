@@ -98,21 +98,26 @@ div[role="textbox"] {
 /* Formata o checkbox */
 label:has([type="checkbox"]) {
 
-  & input {
-    position: relative;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
 
-    /* Cria um checkbox customizado */
-    &::before {
-      position: absolute;
-      content: "";
-      width: 10px;
-      height: 10px;
-      outline: 2px solid var(--main-color);
-      border: 2px solid var(--secondary-color);
-      background: var(--secondary-color);
-      transition: 150ms ease-in-out;
-    }
+  /* Cria um checkbox customizado */
+  &::before {
+    position: absolute;
+    top: 5px;
+    content: "";
+    width: 10px;
+    height: 10px;
+    outline: 2px solid var(--main-color);
+    border: 2px solid var(--secondary-color);
+    background: var(--secondary-color);
+    transition: 150ms ease-in-out;
+    cursor: pointer;
+  }
+
+  & input {
+    margin: 0 10px 0 0;
   }
 
   & span {
@@ -123,7 +128,7 @@ label:has([type="checkbox"]) {
   &:has(input:checked) {
 
     /* Marca um checkbox customizado */
-    & input::before {
+    &::before {
       background: var(--main-color);
     }
 
@@ -148,7 +153,7 @@ button,
   padding: 7px 21px;
   transition: 150ms ease-in-out;
 
-  &[href=""]{
+  &[href=""] {
     opacity: 0;
     pointer-events: none;
   }
