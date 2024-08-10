@@ -18,7 +18,10 @@
   <meta property="og:description" content="Ferramenta para gerar escritos em Língua Antiga, idioma do RPG Chrysopoeia">
 
   <!-- Dependências -->
-  <script src="resources/lingua_antiga.js"></script>
+  <script src="resources/draw_functions.js"></script>
+  <script src="resources/grammar_functions.js"></script>
+  <script src="resources/math_functions.js"></script>
+  <script src="resources/sprites_loader.js"></script>
   <link rel="stylesheet" href="resources/style.css">
 
   <!-- TODO: Adicionar tela de loading -->
@@ -150,7 +153,7 @@
       let rustic = document.querySelector("#LARusticMode").checked
 
       // Traduz a string
-      let LAImage = translateAndCreateIMG(text, mirror, 200, rustic)
+      let LAImage = drawInLA(text, mirror, 200, rustic)
 
       // Insere a imagem
       document.querySelector(".LAImages").insertAdjacentHTML("beforeend",
@@ -171,7 +174,7 @@
     document.querySelector("#LAText").addEventListener("input", () => {
       let string = document.querySelector("#LAText").textContent
       let translated = document.querySelector("#LATranslated")
-      translated.textContent = clearString(string)
+      translated.textContent = LA.convertGrammar(string)
     })
 
 
