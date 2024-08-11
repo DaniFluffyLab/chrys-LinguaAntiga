@@ -16,13 +16,12 @@
   <meta property="og:description" content="Ferramenta para gerar escritos em Língua Antiga, idioma do RPG Chrysopoeia">
 
   <!-- Dependências -->
+  <link rel="preload" as="image" href="resources/imgs/wood.jpg">
   <script src="resources/draw_functions.js"></script>
   <script src="resources/grammar_functions.js"></script>
   <script src="resources/math_functions.js"></script>
   <script src="resources/sprites_loader.js"></script>
   <link rel="stylesheet" href="resources/style.css">
-
-  <!-- TODO: Adicionar tela de loading -->
 
   <!-- Fonte -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,7 +57,7 @@
 
   <img class="vinheta" src="resources/imgs/vignette.png">
 
-  <div class="conteudo papel tipo1">
+  <div id="conteudo" class="papel tipo1">
 
     <header>
       <img src="resources/imgs/logo_chrys.png" alt="Logo do Chrysopoeia" class="logoChrys">
@@ -140,6 +139,12 @@
   </div>
 
   <script>
+
+    // Exibe o conteúdo apenas quando a página terminar de carregar
+    window.addEventListener("load", () => {
+      document.querySelector("body").classList.add("loaded")
+    })
+
 
     // Função para controlar o forms de tradução
     document.querySelector("#tradutor").addEventListener("submit", (event) => {

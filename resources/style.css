@@ -182,6 +182,19 @@ body {
 
 }
 
+/* Exibe conteúdo da página quando estiver carregada */
+body {
+
+  #conteudo {
+    opacity: 0%;
+    transition: 500ms ease-in-out;
+  }
+
+  &.loaded #conteudo {
+    opacity: 100%;
+  }
+}
+
 .vinheta {
   position: fixed;
   inset: 0;
@@ -191,7 +204,7 @@ body {
   pointer-events: none;
 }
 
-.conteudo {
+#conteudo {
 
   width: calc(100% - 80px);
   padding: 40px;
