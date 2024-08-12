@@ -14,7 +14,9 @@
 /* >>> FORMATAÇÃO DE ELEMENTOS <<< */
 
 /* Cria as texturas de papel */
-.papel {
+.papel1,
+.papel2 {
+
   position: relative;
 
   /* Ativa o pseudoelemento onde o background será desenhado */
@@ -32,14 +34,14 @@
   }
 
   /* Papel tipo 1 */
-  &.tipo1::before {
+  &.papel1::before {
     background: #bcb19b var(--img-paper1) top center/1200px;
     box-shadow: 0 0 30px #8a4d0f inset;
     filter: url(#borda-rasgada-curta) drop-shadow(2px 2px 30px #301d0abe);
   }
 
   /* Papel tipo 2 */
-  &.tipo2::before {
+  &.papel2::before {
     background: #fbfbfb var(--img-paper2) top center/cover;
     box-shadow: 0 0 10px #706a5550 inset;
     filter: url(#borda-rasgada-longa) drop-shadow(2px 2px 10px #301d0a70);
@@ -71,6 +73,7 @@ p,
 span,
 button,
 [role="textbox"] {
+
   font-size: 12pt;
 
   @media (max-width: 720px) {
@@ -114,10 +117,12 @@ label:has([type="checkbox"]) {
     cursor: pointer;
   }
 
+  /* Oculta checkbox original */
   & input {
     display: none;
   }
 
+  /* Destaca ponteiro no rótulo */
   & span {
     cursor: pointer;
     transition: 150ms ease-in-out;
@@ -125,11 +130,12 @@ label:has([type="checkbox"]) {
 
   &:has(input:checked) {
 
-    /* Marca um checkbox customizado */
+    /* Marca o checkbox customizado */
     &::before {
       background: var(--main-color);
     }
 
+    /* Negrita rótulo */
     & span {
       font-weight: 600;
     }
@@ -140,22 +146,29 @@ label:has([type="checkbox"]) {
 /* Formata botões */
 button,
 .button {
+
   background: var(--img-texture);
   color: var(--secondary-color);
+
   font-family: "Platypi", serif;
   font-weight: 600;
   text-decoration: none;
+
   border: none;
   border-radius: 5px;
+
   margin: 0 auto;
   padding: 7px 21px;
+
   transition: 150ms ease-in-out;
 
+  /* Oculta botão sem link */
   &[href=""] {
     opacity: 0;
     pointer-events: none;
   }
 
+  /* Realça botão quando mouse sobrepor */
   &:hover {
     opacity: 70%;
     cursor: pointer;
@@ -170,8 +183,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
   margin: 0;
   padding: 20px;
+
   background: #af896f var(--img-wood) center center/cover no-repeat fixed;
   min-height: calc(100vh - 40px);
 
@@ -190,19 +205,76 @@ body {
     transition: 500ms ease-in-out;
   }
 
+  #loading {
+    transition: 1s ease-in-out;
+  }
+
   &.loaded #conteudo {
     opacity: 100%;
+  }
+
+  &.loaded #loading {
+    opacity: 0%;
+  }
+}
+
+/* Tela de carregamento */
+#loading {
+
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Logo Chrys */
+  & img {
+    width: 200px;
+    max-width: 80vw;
+  }
+
+  /* Barra de loading */
+  & .loadingBar {
+    width: 200px;
+    max-width: 80vw;
+    background-color: #00000090;
+    height: 10px;
+    border-radius: 10px;
+    animation: animLoadingBar 1s ease-in-out infinite alternate;
+  }
+}
+
+/* Animação da barra de loading */
+@keyframes animLoadingBar {
+  0% {
+    margin-left: 0%;
+    width: 10px;
+  }
+
+  50% {
+    width: 60px;
+  }
+
+  100% {
+    margin-left: calc(100% - 10px);
+    width: 10px;
   }
 }
 
 .vinheta {
+
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
   z-index: 1000;
+  
   pointer-events: none;
-  background: radial-gradient(rgba(0,0,0,0%) 40%, rgba(0,0,0,75%) 100%);
+  background: radial-gradient(rgba(0, 0, 0, 0%) 40%, rgba(0, 0, 0, 75%) 100%);
 }
 
 #conteudo {
@@ -218,6 +290,7 @@ body {
 }
 
 header {
+
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -230,6 +303,7 @@ header {
   }
 
   & h1 {
+
     font-size: 30pt;
     padding-bottom: 15pt;
     text-align: center;
@@ -240,6 +314,7 @@ header {
   }
 
   @media (max-width: 720px) {
+
     flex-direction: column;
     gap: 0px;
 
@@ -276,6 +351,7 @@ form#tradutor {
 }
 
 .camposForm {
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -294,11 +370,15 @@ form#tradutor {
 }
 
 .LAImages {
+
   width: 100%;
   height: 100%;
+
   max-height: 300px;
   max-width: 300px;
+
   aspect-ratio: 1 / 1;
+  
   rotate: 5deg;
   overflow: visible;
 
@@ -318,18 +398,18 @@ form#tradutor {
   &:has([data-type="new"]) {
 
     img[data-type="old"] {
-      animation: 5s ease-in-out translateOld;
+      animation: 5s ease-in-out animTranslateOld;
     }
 
     img[data-type="new"] {
-      animation: 5s ease-in-out translateNew;
+      animation: 5s ease-in-out animTranslateNew;
     }
 
   }
 
 }
 
-@keyframes translateOld {
+@keyframes animTranslateOld {
   0% {
     opacity: 100%;
     rotate: 0deg;
@@ -353,7 +433,7 @@ form#tradutor {
   }
 }
 
-@keyframes translateNew {
+@keyframes animTranslateNew {
   0% {
     opacity: 0%;
     rotate: 0deg;
