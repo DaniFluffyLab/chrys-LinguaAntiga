@@ -378,7 +378,7 @@ form#tradutor {
   max-width: 300px;
 
   aspect-ratio: 1 / 1;
-  
+
   rotate: 5deg;
   overflow: visible;
 
@@ -409,6 +409,7 @@ form#tradutor {
 
 }
 
+/* Animação para imagem anterior */
 @keyframes animTranslateOld {
   0% {
     opacity: 100%;
@@ -433,6 +434,7 @@ form#tradutor {
   }
 }
 
+/* Animação para imagem atual */
 @keyframes animTranslateNew {
   0% {
     opacity: 0%;
