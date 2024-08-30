@@ -328,6 +328,36 @@ header {
   }
 }
 
+section {
+
+  & span[redacted] {
+
+    display: inline-block;
+
+    font-family: "Redacted Script";
+    position: relative;
+    font-weight: 600;
+    -moz-text-fill-color: var(--main-color);
+    -webkit-text-fill-color: var(--main-color);
+
+    &::selection {
+      background-color: #65698c;
+    }
+
+    &::before{
+      content: attr(redacted);
+      width: 100%;
+      text-wrap: nowrap;
+      overflow: hidden;
+      position: absolute;
+      top: -5px;
+      font-family: "Platypi", serif;
+      font-weight: 400;
+      opacity: 100%;
+    }
+  }
+}
+
 form#tradutor {
 
   display: flex;
