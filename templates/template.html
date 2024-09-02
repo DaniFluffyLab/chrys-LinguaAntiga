@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/resources/imgs/favicon.png">
+  <title>Tradutor de Língua Antiga - Chrysopoeia</title>
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="???    ????? ?? ?">
+  <meta property="og:url" content="https://linguaantiga.danifluffy.dev/">
+  <meta property="og:image" content="TROCAR PARA URL COM IMG DIFERENTE">
+  <meta property="og:description" content="??????">
+
+  <!-- Dependências -->
+  <link rel="preload" as="image" href="/resources/imgs/wood.jpg">
+  <link rel="preload" as="image" href="/resources/imgs/logo_chrysSym.png">
+  <link rel="stylesheet" href="/resources/style.css">
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Redacted+Script:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Filtros SVG -->
+  <svg height="0" width="0">
+    <filter id="borda-rasgada-curta">
+      <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="1" />
+      <feDisplacementMap in="SourceGraphic" scale="15" />
+    </filter>
+    <filter id="borda-rasgada-longa">
+      <feTurbulence x="0" y="0" baseFrequency="0.009" numOctaves="5" seed="3" />
+      <feDisplacementMap in="SourceGraphic" scale="15" />
+    </filter>
+  </svg>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3BQ5Z085RZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-3BQ5Z085RZ');
+  </script>
+
+</head>
+
+<body>
+
+  <div class="vinheta"></div>
+
+  <div id="loading">
+    <div class="loadingContainer">
+      <img src="/resources/imgs/logo_chrysSym.png" alt="Logo do Chrysopoeia">
+      <div class="loadingBar"></div>
+    </div>
+  </div>
+
+  <div id="conteudo" class="papel1">
+
+    <header>
+      <img src="logoipsum.svg" style="height: 100px;">
+      <h1>Template de páginas</h1>
+    </header>
+
+    <section>
+
+      <h2>Cabeçalho</h2>
+
+      <p>Dolores sit ea eleifend lorem sit eum eu. Est diam eos justo diam sadipscing consetetur nam diam luptatum.
+        Dolore tempor nibh <span redacted="lorem nulla lorem no mazim"> nulla molestie voluptua ipsum</span> ullamcorper
+        assum accusam. Nobis velit consectetuer nonumy sit nibh. No sanctus diam feugait justo duo wisi duis adipiscing
+        no. Erat nulla hendrerit amet sea amet diam est ipsum voluptua sed.</p>
+
+      <p>Voluptua laoreet amet sea sanctus et lorem dolor invidunt sit et dolore sed et. Dolore at et. Labore voluptua
+        ipsum ea duis nonummy enim praesent dignissim <span redacted="lorem sadipscing congue">Veniam et ea elitr
+          autem.</span> et delenit tempor. Justo labore in duo aliquip no duo eirmod ut hendrerit exerci consectetuer
+        esse justo lobortis sea duis lorem kasd. Ut magna sadipscing et stet labore magna dolor et stet gubergren
+        hendrerit. Voluptua sed soluta diam ad voluptua est et est vero ipsum. Et ipsum ut consetetur tation hendrerit
+        et delenit sit eos tempor elitr et aliquam luptatum lorem magna no.</p>
+
+      <p><br></p>
+
+      <div style="margin: auto; width: 200px; padding: 20px;" class="papel2">
+        <img src="https://static.wikia.nocookie.net/nicos-nextbots-fanmade/images/c/c7/Dance.gif.gif">
+      </div>
+
+    </section>
+
+  </div>
+
+  <script>
+
+    // Exibe o conteúdo apenas quando a página terminar de carregar
+    window.addEventListener("load", () => {
+      document.querySelector("body").classList.add("loaded")
+    })
+
+  </script>
+
+</body>
+
+</html>
