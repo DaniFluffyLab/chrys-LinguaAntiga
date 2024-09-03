@@ -25,18 +25,18 @@
 
         // Declaração de variáveis
         const hashValue = "05816063569184309d60b526aecbf938";
-        const actualURL = window.location.href;
+        const actualURL = (window.location.href).replace(/\/$/);
         const mainURL = "https://linguaantiga.danifluffy.dev";
         const otherURL = "https://sites.google.com/view/dani-teste";
-        let redirectURL = mainURL.replace(/\/$/)
+        let redirectURL = mainURL
 
         // Valida MD5
         if (md5(actualURL) == hashValue) {
-            redirectURL = mainURL.replace(mainURL, otherURL)
+            redirectURL = actualURL.replace(mainURL, otherURL)
         }
 
         // Redireciona para o site correto
-        window.location.href = redirectURL
+        window.location.replace(redirectURL)
     </script>
 </head>
 
