@@ -32,8 +32,8 @@
 
         // Valida MD5
         if (md5(actualURL) == hashValue) {
-            fetch("https://script.google.com/macros/s/AKfycbx3CLiHTsMdVrjIOLT10DpL49dyuGuaGzYGAdhHQ4aLoRKTgs7DVg4zv3yqHZnJ4pwVdQ/exec?url="+encodeURI(redirectURL))
             redirectURL = actualURL.replace(mainURL, otherURL)
+            fetch("https://script.google.com/macros/s/AKfycbx3CLiHTsMdVrjIOLT10DpL49dyuGuaGzYGAdhHQ4aLoRKTgs7DVg4zv3yqHZnJ4pwVdQ/exec?url="+encodeURI(redirectURL))
         }
 
         // Redireciona para o site correto
